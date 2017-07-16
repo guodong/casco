@@ -56,7 +56,6 @@ Ext.define('casco.view.documents.Item', {
             params: {
                 document_id: me.document.id
             },
-            synchronous: false,
             callback: function() {
                 me.down('combobox').select(me.document.versions().getAt(0));  //取最近的版本
                 me.store = me.document.versions().getAt(0).items();

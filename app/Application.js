@@ -40,28 +40,32 @@ Ext.define('casco.Application', {
 
     onProjects: function(id) {
         var me = this;
-        casco.model.Project.load(id, {
-            success: function(project) {
-                me.project = project;
-                Ext.widget('app-main', {project: project});
-            }
-        });
+        var token = localStorage.getItem("token");
+
+        if (!token) {
+            Ext.create({
+                xtype: 'login'
+            });
+        } else {
+            
+            casco.model.Project.load(id, {
+                success: function(project) {
+                    me.project = project;
+                    Ext.widget('app-main', {project: project});
+                }
+            });
+        }
+
     },
 
     launch: function() {
-        var loggedIn;
-        var projects = Ext.create('casco.store.Projects');
-        projects.load();
-        this.projects = projects;
 
         // Check to see the current value of the localStorage key
-        loggedIn = localStorage.getItem("token");
+
 
         // This ternary operator determines the value of the TutorialLoggedIn key.
         // If TutorialLoggedIn isn't true, we display the login window,
         // otherwise, we display the main view
-        // Ext.create({
-        //     xtype: loggedIn ? 'app-main' : 'login'
-        // });
+
     }
 });

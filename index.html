@@ -7,7 +7,11 @@
 
     <title>casco</title>
     <script>
-        API = 'http://localhost:8000/v1/';
+        if (location.hostname == 'casco.cloudwarehub.com') {
+            API = 'http://api.casco.cloudwarehub.com';
+        } else {
+            API = 'http://localhost:8000/v1/';
+        }
     </script>
 
     <!-- The line below must be kept intact for Sencha Cmd to build your application -->

@@ -40,17 +40,15 @@ Ext.define('casco.view.main.Content', {
             xtype: 'app-documents',
             project: this.project
         }, {
+            title: '归档',
+            iconCls: 'fa-server',
+            xtype: 'app.archives.main'
+        },{
             title: '结构',
             iconCls: 'fa-share-alt',
             // The following grid shares a store with the classic version's grid as well!
             html: '<iframe id="draw" src="/draw/demo.html?'+'&_d='+Date.parse(new Date())+'" style="width:100%;height:100%;border:0"></iframe>'
-        }, {
-            title: '定版',
-            iconCls: 'fa-server',
-            bind: {
-                html: '{loremIpsum}'
-            }
-        }, {
+        },  {
             title: '测试',
             iconCls: 'fa-rocket',
             bind: {
